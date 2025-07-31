@@ -1,14 +1,4 @@
-node_modules
-dist
-.DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
-node_modules/
-dist/
-.env
-*.json
-replit.nix# Dependencies
+# Dependencies
 node_modules/
 
 # Build output
@@ -36,7 +26,6 @@ vite.config.ts.*
 *.tar.gz
 
 # Replit sensitive files
-*.json
 replit.nix
 replit-config.json
 __repl.json
