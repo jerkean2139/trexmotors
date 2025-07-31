@@ -1,0 +1,19 @@
+// Simple icon conversion script
+const fs = require('fs');
+
+// Create a simple data URL version of our T-Rex logo
+const trexIcon192 = `data:image/svg+xml;base64,${Buffer.from(`
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="24" fill="#37ca37"/>
+  <path d="M48 120C48 120 52 95 65 85C78 75 90 78 95 82C100 78 112 75 125 85C138 95 142 120 142 120L138 125C138 125 130 110 120 105C115 102 105 100 95 100C85 100 75 102 70 105C60 110 52 125 52 125L48 120Z" fill="white"/>
+  <circle cx="82" cy="95" r="4" fill="#37ca37"/>
+  <circle cx="108" cy="95" r="4" fill="#37ca37"/>
+  <path d="M85 105L87 110L89 105L91 110L93 105L95 110L97 105L99 110L101 105L103 110L105 105" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M65 110C65 110 60 112 58 115C58 115 62 118 65 116" fill="white"/>
+  <path d="M125 110C125 110 130 112 132 115C132 115 128 118 125 116" fill="white"/>
+  <text x="96" y="145" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">T-REX</text>
+  <text x="96" y="165" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">MOTORS</text>
+</svg>
+`).toString('base64')}`;
+
+console.log('T-Rex Icon Data URL:', trexIcon192);

@@ -1,0 +1,144 @@
+Looking at your server/ folder, your file layout is correct—but your vite.ts is crashing when it loads vite.config.ts (because that pulls in the Replit plugins) and so you fall back every time. You’re also hitting a bannerManager is not a function error next.
+
+Here’s your action list to get back up and running:
+
+1) Quick fix your Vite setup
+Instead of importing your full vite.config.ts, let’s inline just the bits we need in server/vite.ts so the module never fails.
+
+Overwrite your current server/vite.ts with this (you can copy‑paste the whole file):
+
+ts
+Copy
+Edit
+// server/vite.ts
+import express, { type Express } from "express";
+import path from "path";
+import fs from "fs";
+import { createServer as createViteServer } from "vite";
+import { fileURLToPath } from "url";
+
+// ESM __dirname shim
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// 1) Vite middleware setup
+export async function setupVite(app: Express, server: any) {
+  const vite = await createViteServer({
+    root: path.resolve(__dirname, "../client"),  // your front‑end folder
+    server: { middlewareMode: true, hmr: true },
+    appType: "custom",
+  });
+  app.use(vite.middlewares);
+
+  // serve index.html on every non‑API route
+  app.use("*", async (req, res, next) => {
+    try {
+      const indexHtml = path.resolve(__dirname, "../client/index.html");
+      let template = await fs.promises.readFile(indexHtml, "utf-8");
+      const html = await vite.transformIndexHtml(req.originalUrl, template);
+      res.status(200).set({ "Content-Type": "text/html" }).end(html);
+    } catch (e) {
+      vite.ssrFixStacktrace(e as Error);
+      next(e);
+    }
+  });
+}
+
+// 2) Static fallback for production builds
+export function serveStatic(app: Express) {
+  const distDir = path.resolve(__dirname, "../dist/public");
+  if (!fs.existsSync(distDir)) {
+    throw new Error(`Missing build dir: ${distDir}. Run "npm run build".`);
+  }
+  app.use(express.static(distDir));
+  app.use("*", (_req, res) => {
+    res.sendFile(path.resolve(distDir, "index.html"));
+  });
+}
+
+// 3) Simple logger
+export function log(msg: string) {
+  console.log(msg);
+}
+This does not import your old vite.config.ts (and so avoids the missing Replit plugin error).
+
+2) Restart your dev server
+In the console, stop any running process:
+
+nginx
+Copy
+Edit
+killall node
+Run in development mode:
+
+arduino
+Copy
+Edit
+npm run dev
+You should now see:
+
+pgsql
+Copy
+Edit
+📦 Trying to import ./vite…
+✅ Loaded ./vite successfully
+Server listening on port 5000
+Open the Vite preview (e.g. http://localhost:5173/)—you’ll get your full React + Tailwind site with live‑reload.
+
+3) Fix the bannerManager is not a function error
+Your logs also show:
+
+vbnet
+Copy
+Edit
+❌ Server startup error: TypeError: bannerManager is not a function
+That means the way you’re importing from server/banner-manager.ts doesn’t match its exports. To fix:
+
+Open server/banner-manager.ts.
+
+If it does:
+
+ts
+Copy
+Edit
+export default function bannerManager(app) { … }
+then in server/index.ts you must import it as:
+
+ts
+Copy
+Edit
+import bannerManager from "./banner-manager";
+Or, if it’s exporting a named function:
+
+ts
+Copy
+Edit
+export function bannerManager(app) { … }
+then keep your import but wrap calls correctly.
+
+Adjust the import so that bannerManager(app) is actually a function call, then save.
+
+After both fixes:
+Vite will load without error
+
+bannerManager will initialize
+
+Your dev server will boot cleanly, and your site will load styled and wired up.
+
+Give that a try, and share any remaining console lines if something still trips up!
+
+
+
+
+
+
+
+
+
+Ask ChatGPT
+
+
+
+Tools
+
+

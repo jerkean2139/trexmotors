@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#37ca37"/>
+  
+  <!-- T-Rex Head Silhouette (Larger) -->
+  <path d="M128 320C128 320 140 253 175 227C210 200 240 208 256 220C272 208 302 200 337 227C372 253 384 320 384 320L370 335C370 335 348 295 320 280C304 272 280 267 256 267C232 267 208 272 192 280C164 295 142 335 142 335L128 320Z" fill="white"/>
+  
+  <!-- T-Rex Eyes (Larger) -->
+  <circle cx="218" cy="253" r="10" fill="#37ca37"/>
+  <circle cx="288" cy="253" r="10" fill="#37ca37"/>
+  
+  <!-- T-Rex Teeth (Larger) -->
+  <path d="M226 280L232 295L238 280L244 295L250 280L256 295L262 280L268 295L274 280L280 295L286 280" stroke="white" stroke-width="5" fill="none"/>
+  
+  <!-- T-Rex Arms (Small, Larger) -->
+  <path d="M175 295C175 295 160 300 155 310C155 310 165 315 175 310" fill="white"/>
+  <path d="M337 295C337 295 352 300 357 310C357 310 347 315 337 310" fill="white"/>
+  
+  <!-- Company Text (Larger) -->
+  <text x="256" y="385" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="42" font-weight="bold">T-REX</text>
+  <text x="256" y="440" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="32">MOTORS</text>
+</svg>

@@ -1,0 +1,24 @@
+Access to manifest at 'https://replit.com/__replshield?redirect=https%3A%2F%2Ftrex-motors-keanonbiz.replit.app%2Fmanifest.json' (redirected from 'https://trex-motors-keanonbiz.replit.app/manifest.json') from origin 'https://trex-motors-keanonbiz.replit.app' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.Understand this error
+replit.com/__replshield?redirect=https%3A%2F%2Ftrex-motors-keanonbiz.replit.app%2Fmanifest.json:1  Failed to load resource: net::ERR_FAILEDUnderstand this error
+pixel.js:2 load fbq
+BTQ5PiNB.js:1 iFrame script is ready!
+C-LyUo9R.js:1 Deprecated API for given entry type.
+J @ C-LyUo9R.js:1
+(anonymous) @ B1OJYWfP.js:22
+Promise.then
+hn @ To9c03Q6.js:14
+(anonymous) @ B1OJYWfP.js:22Understand this warning
+trex-motors-keanonbiz.replit.app/:1 Access to internal resource at 'https://replit.com/__replshield?redirect=https%3A%2F%2Ftrex-motors-keanonbiz.replit.app%2Fmanifest.json' (redirected from 'https://trex-motors-keanonbiz.replit.app/manifest.json') from origin 'https://trex-motors-keanonbiz.replit.app' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.Understand this error
+[Report Only] Refused to frame 'https://www.google.com/' because an ancestor violates the following Content Security Policy directive: "frame-ancestors 'self'".
+Understand this error
+[Report Only] Refused to frame 'https://www.google.com/' because an ancestor violates the following Content Security Policy directive: "frame-ancestors 'self'".
+Understand this error
+trex-motors-keanonbiz.replit.app/:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+NyKaHaM78aOGlNVvmd1P:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+anchor:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+trex-motors-keanonbiz.replit.app/:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+NyKaHaM78aOGlNVvmd1P:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+about:blank:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+anchor:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+about:blank:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error
+2about:blank:1 Uncaught (in promise) Error: Could not establish connection. Receiving end does not exist.Understand this error

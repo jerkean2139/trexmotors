@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Vehicle Webhook</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .loading { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>T-Rex Motors Vehicle Webhook Test</h1>
+    
+    <div class="status loading" id="status">Testing webhook connection...</div>
+    
+    <h2>Test Vehicle Data (2014 Chevrolet Cruze)</h2>
+    <pre id="vehicleData"></pre>
+    
+    <h2>Response</h2>
+    <pre id="response">Waiting for response...</pre>
+    
+    <button onclick="testAgain()">Test Again</button>
+    
+    <script>
+        const vehicleData = {
+            status: 'For Sale',
+            stockNumber: '1052',
+            vin: '1G1PB5SG7E7352046',
+            year: 2014,
+            make: 'Chevrolet',
+            model: 'Cruze',
+            miles: 103903,
+            price: 9999,
+            exteriorColor: 'DARK GREEN',
+            interiorColor: 'Tan',
+            description: 'one touch windows, folding side/driver mirror, cruise, 12v power outlet',
+            notes: ''
+        };
+        
+        document.getElementById('vehicleData').textContent = JSON.stringify(vehicleData, null, 2);
+        
+        function buildWebhookUrl() {
+            const baseUrl = window.location.origin + '/api/webhook/add-vehicle';
+            const params = new URLSearchParams();
+            
+            Object.entries(vehicleData).forEach(([key, value]) => {
+                params.append(key, value.toString());
+            });
+            
+            return baseUrl + '?' + params.toString();
+        }
+        
+        async function testWebhook() {
+            const statusDiv = document.getElementById('status');
+            const responseDiv = document.getElementById('response');
+            
+            try {
+                statusDiv.className = 'status loading';
+                statusDiv.textContent = 'Sending webhook request...';
+                
+                const url = buildWebhookUrl();
+                console.log('Testing URL:', url);
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = 'Vehicle webhook successful!';
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.textContent = 'Webhook failed: ' + (data.error || 'Unknown error');
+                }
+                
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+                
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = 'Connection error: ' + error.message;
+                responseDiv.textContent = 'Error: ' + error.message;
+            }
+        }
+        
+        function testAgain() {
+            testWebhook();
+        }
+        
+        // Auto-run test on page load
+        testWebhook();
+    </script>
+</body>
+</html>

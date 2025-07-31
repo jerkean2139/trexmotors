@@ -1,0 +1,87 @@
+Node.js v20.19.3
+~/workspace$ ^[[200~npm run db:push
+npm run db:pushbash: npm: command not found
+~/workspace$ cat production-data.sql | psql $DATABASE_URL~
+psql: error: invalid sslmode value: "require~"
+~/workspace$ npm run db:push
+cat production-data.sql | psql $DATABASE_URL
+
+> rest-express@1.0.0 db:push
+> drizzle-kit push
+
+sh: 1: drizzle-kit: not found
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(58) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(41) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(45) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(48) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(43) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(55) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(52) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(42) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(49) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(50) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(51) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(53) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(54) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(57) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(56) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(44) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(47) already exists.
+ERROR:  duplicate key value violates unique constraint "vehicles_pkey"
+DETAIL:  Key (id)=(46) already exists.
+ERROR:  duplicate key value violates unique constraint "customer_applications_pkey"
+DETAIL:  Key (id)=(1) already exists.
+ERROR:  duplicate key value violates unique constraint "inquiries_pkey"
+DETAIL:  Key (id)=(1) already exists.
+ERROR:  duplicate key value violates unique constraint "inquiries_pkey"
+DETAIL:  Key (id)=(2) already exists.
+ERROR:  duplicate key value violates unique constraint "inquiries_pkey"
+DETAIL:  Key (id)=(3) already exists.
+ setval 
+--------
+      1
+(1 row)
+
+ setval 
+--------
+      3
+(1 row)
+
+ setval 
+--------
+     58
+(1 row)
+
+~/workspace$ ^C
+~/workspace$ 

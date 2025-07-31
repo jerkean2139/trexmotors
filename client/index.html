@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="theme-color" content="#37ca37" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/manifest.json" />
+
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMzN2NhMzciLz4KICA8IS0tIFQtUmV4IEhlYWQgU2lsaG91ZXR0ZSAtLT4KICA8cGF0aCBkPSJNNDggMTIwQzQ4IDEyMCA1MiA5NSA2NSA4NUM3OCA3NSA5MCA3OCA5NSA4MkMxMDAgNzggMTEyIDc1IDEyNSA4NUMxMzggOTUgMTQyIDEyMCAxNDIgMTIwTDEzOCAxMjVDMTM4IDEyNSAxMzAgMTEwIDEyMCAxMDVDMTE1IDEwMiAxMDUgMTAwIDk1IDEwMEM4NSAxMDAgNzUgMTAyIDcwIDEwNUM2MCAxMTAgNTIgMTI1IDUyIDEyNUw0OCAxMjBaIiBmaWxsPSJ3aGl0ZSIvPgogIDwhLS0gVC1SZXggRXllcyAtLT4KICA8Y2lyY2xlIGN4PSI4MiIgY3k9Ijk1IiByPSI0IiBmaWxsPSIjMzdjYTM3Ii8+CiAgPGNpcmNsZSBjeD0iMTA4IiBjeT0iOTUiIHI9IjQiIGZpbGw9IiMzN2NhMzciLz4KICA8IS0tIFQtUmV4IFRlZXRoIC0tPgogIDxwYXRoIGQ9Ik04NSAxMDVMODcgMTEwTDg5IDEwNUw5MSAxMTBMOTMgMTA1TDk1IDExMEw5NyAxMDVMOTkgMTEwTDEwMSAxMDVMMTAzIDExMEwxMDUgMTA1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8IS0tIFQtUmV4IEFybXMgKFNtYWxsKSAtLT4KICA8cGF0aCBkPSJNNjUgMTEwQzY1IDExMCA2MCAxMTIgNTggMTE1QzU4IDExNSA2MiAxMTggNjUgMTE2IiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik0xMjUgMTEwQzEyNSAxMTAgMTMwIDExMiAxMzIgMTE1QzEzMiAxMTUgMTI4IDExOCAxMjUgMTE2IiBmaWxsPSJ3aGl0ZSIvPgogIDwhLS0gQ29tcGFueSBUZXh0IC0tPgogIDx0ZXh0IHg9Ijk2IiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5ULVJFWC90ZXh0PgogIDx0ZXh0IHg9Ijk2IiB5PSIxNjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPk1PVE9SUzwvdGV4dD4KPC9zdmc+" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMzN2NhMzciLz4KICA8IS0tIFQtUmV4IEhlYWQgU2lsaG91ZXR0ZSAtLT4KICA8cGF0aCBkPSJNNDggMTIwQzQ4IDEyMCA1MiA5NSA2NSA4NUM3OCA3NSA5MCA3OCA5NSA4MkMxMDAgNzggMTEyIDc1IDEyNSA4NUMxMzggOTUgMTQyIDEyMCAxNDIgMTIwTDEzOCAxMjVDMTM4IDEyNSAxMzAgMTEwIDEyMCAxMDVDMTE1IDEwMiAxMDUgMTAwIDk1IDEwMEM4NSAxMDAgNzUgMTAyIDcwIDEwNUM2MCAxMTAgNTIgMTI1IDUyIDEyNUw0OCAxMjBaIiBmaWxsPSJ3aGl0ZSIvPgogIDwhLS0gVC1SZXggRXllcyAtLT4KICA8Y2lyY2xlIGN4PSI4MiIgY3k9Ijk1IiByPSI0IiBmaWxsPSIjMzdjYTM3Ii8+CiAgPGNpcmNsZSBjeD0iMTA4IiBjeT0iOTUiIHI9IjQiIGZpbGw9IiMzN2NhMzciLz4KICA8IS0tIFQtUmV4IFRlZXRoIC0tPgogIDxwYXRoIGQ9Ik04NSAxMDVMODcgMTEwTDg5IDEwNUw5MSAxMTBMOTMgMTA1TDk1IDExMEw5NyAxMDVMOTkgMTEwTDEwMSAxMDVMMTAzIDExMEwxMDUgMTA1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8IS0tIFQtUmV4IEFybXMgKFNtYWxsKSAtLT4KICA8cGF0aCBkPSJNNjUgMTEwQzY1IDExMCA2MCAxMTIgNTggMTE1QzU4IDExNSA2MiAxMTggNjUgMTE2IiBmaWxsPSJ3aGl0ZSIvPgogIDxwYXRoIGQ9Ik0xMjUgMTEwQzEyNSAxMTAgMTMwIDExMiAxMzIgMTE1QzEzMiAxMTUgMTI4IDExOCAxMjUgMTE2IiBmaWxsPSJ3aGl0ZSIvPgogIDwhLS0gQ29tcGFueSBUZXh0IC0tPgogIDx0ZXh0IHg9Ijk2IiB5PSIxNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5ULVJFWC90ZXh0PgogIDx0ZXh0IHg9Ijk2IiB5PSIxNjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPk1PVE9SUzwvdGV4dD4KPC9zdmc+" sizes="192x192" />
+
+    <!-- PWA specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="T-Rex Motors" />
+    <title>T-Rex Motors - Quality Used Vehicles</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Replit development banner removed for clean deployment -->
+    
+    <!-- PWA Service Worker Registration - Temporarily disabled for cleaner console -->
+    <script>
+      // Service worker registration temporarily disabled to fix MIME type errors
+      // Will be re-enabled once proper server configuration is in place
+    </script>
+  </body>
+</html>

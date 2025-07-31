@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Vehicle Test</title>
+</head>
+<body>
+    <h1>Direct API Test</h1>
+    <div id="results"></div>
+    <script>
+        console.log('🔍 Starting simple vehicle test...');
+        
+        // Test 1: Direct API call
+        fetch('/api/vehicles')
+            .then(res => {
+                console.log('API Status:', res.status);
+                return res.json();
+            })
+            .then(data => {
+                console.log('API Response:', data);
+                document.getElementById('results').innerHTML = 
+                    `<p>Found ${data.length} vehicles</p>
+                     <p>First vehicle: ${data[0]?.title || 'None'}</p>
+                     <pre>${JSON.stringify(data.slice(0,2), null, 2)}</pre>`;
+            })
+            .catch(err => {
+                console.error('API Error:', err);
+                document.getElementById('results').innerHTML = `<p>Error: ${err.message}</p>`;
+            });
+    </script>
+</body>
+</html>

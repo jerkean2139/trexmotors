@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2012 Cadillac CTS | T-Rex Motors | Richmond, IN</title>
+  <meta name="description" content="Experience American luxury in this 2012 Cadillac CTS. With only 93,086 miles, this black luxury sedan features leatherette seats, dual zone climate control, and premium amenities at just $12,500.">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #7ed957;
+      --primary-dark: #65b042;
+      --secondary: #333333;
+      --light-bg: #f8f9fa;
+      --medium-bg: #e9ecef;
+      --text-dark: #222;
+      --text-light: #666;
+      --white: #ffffff;
+      --border: #e1e1e1;
+      --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+```
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--light-bg);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Vehicle Showcase */
+.vehicle-showcase {
+  padding: 0;
+}
+
+.vehicle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.vehicle-title h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  color: var(--secondary);
+}
+
+.vehicle-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--primary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+/* Gallery Section */
+.gallery-section {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.main-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 450px;
+  box-shadow: var(--box-shadow);
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  display: none;
+}
+
+.main-image img.active {
+  display: block;
+}
+
+.main-image:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-nav {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.gallery-dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.gallery-dot.active {
+  background: var(--white);
+}
+
+.gallery-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+}
+
+.gallery-control {
+  width: 50px;
+  height: 50px;
+  background: rgba(0,0,0,0.3);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.gallery-control:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.thumbnail {
+  height: 80px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: var(--box-shadow);
+}
+
+.thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.thumbnail.active::after {
+  border-color: var(--primary);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+/* Info Sections */
+.vehicle-info-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+.vehicle-details {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--secondary);
+}
+
+.vehicle-description {
+  margin-bottom: 30px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.specs-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table th,
+.specs-table td {
+  padding: 12px 8px;
+  text-align: left;
+}
+
+.specs-table th {
+  color: var(--text-light);
+  font-weight: 500;
+  width: 40%;
+}
+
+.specs-table td {
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--light-bg);
+  color: var(--secondary);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Sidebar */
+.vehicle-sidebar {
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 25px;
+}
+
+.dealer-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dealer-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  object-fit: cover;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: var(--white);
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-icon {
+  width: 35px;
+  height: 35px;
+  background: var(--light-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  color: var(--primary);
+}
+
+.contact-form-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.contact-form-section h3 {
+  font-size: 18px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+
+#popup-button {
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .gallery-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .thumbnails {
+    flex-direction: row;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 15px;
+  }
+  
+  .thumbnail {
+    height: 80px;
+    min-width: 120px;
+  }
+  
+  .vehicle-info-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .vehicle-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .vehicle-header {
+    flex-direction: column;
+  }
+  
+  .vehicle-price {
+    margin-top: 15px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .main-image {
+    height: 300px;
+  }
+}
+
+/* SOLD Banner Styles */
+.sold-banner {
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 50px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 20;
+  text-align: center;
+  letter-spacing: 2px;
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <main class="container vehicle-showcase">
+    <!-- Vehicle Header -->
+    <div class="vehicle-header">
+      <div class="vehicle-title">
+        <h1>2012 Cadillac CTS</h1>
+        <p>American Luxury Performance Sedan</p>
+      </div>
+      <div class="vehicle-price">
+        $12,500
+      </div>
+    </div>
+
+```
+<!-- Gallery Section -->
+<div class="gallery-section">
+  <div class="main-image">
+    <!-- MAIN IMAGES - GHL MEDIA URLS -->
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418684111e9e3f219b1.jpeg" alt="Cadillac CTS Front View" class="active" id="image-0">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418a1908eedaad2c0d1.jpeg" alt="Cadillac CTS Side View" id="image-1">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d419a1908ef2bfd2c0d2.jpeg" alt="Cadillac CTS Rear View" id="image-2">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d419b0988059e3435f2e.jpeg" alt="Cadillac CTS Interior" id="image-3">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418583c67258d55e24f.jpeg" alt="Cadillac CTS Dashboard" id="image-4">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d4189cd8fb53f39a14bf.jpeg" alt="Cadillac CTS Interior Detail" id="image-5">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d3c17410f9803da2a0c3.jpeg" alt="Cadillac CTS Additional View" id="image-6">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824e0e320806f0f2fee1575.jpeg" alt="Cadillac CTS Additional View 2" id="image-7">
+    <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824e0e39cd8fb58969a3d54.jpeg" alt="Cadillac CTS Additional View 3" id="image-8">
+    
+    <div class="gallery-nav">
+      <span class="gallery-dot active" data-index="0"></span>
+      <span class="gallery-dot" data-index="1"></span>
+      <span class="gallery-dot" data-index="2"></span>
+      <span class="gallery-dot" data-index="3"></span>
+      <span class="gallery-dot" data-index="4"></span>
+      <span class="gallery-dot" data-index="5"></span>
+      <span class="gallery-dot" data-index="6"></span>
+      <span class="gallery-dot" data-index="7"></span>
+      <span class="gallery-dot" data-index="8"></span>
+    </div>
+    
+    <div class="gallery-controls">
+      <div class="gallery-control prev">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="gallery-control next">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="thumbnails">
+    <!-- THUMBNAILS - SAME GHL MEDIA URLS -->
+    <div class="thumbnail active" data-index="0">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418684111e9e3f219b1.jpeg" alt="Cadillac CTS Thumbnail 1">
+    </div>
+    <div class="thumbnail" data-index="1">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418a1908eedaad2c0d1.jpeg" alt="Cadillac CTS Thumbnail 2">
+    </div>
+    <div class="thumbnail" data-index="2">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d419a1908ef2bfd2c0d2.jpeg" alt="Cadillac CTS Thumbnail 3">
+    </div>
+    <div class="thumbnail" data-index="3">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d419b0988059e3435f2e.jpeg" alt="Cadillac CTS Thumbnail 4">
+    </div>
+    <div class="thumbnail" data-index="4">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d418583c67258d55e24f.jpeg" alt="Cadillac CTS Thumbnail 5">
+    </div>
+    <div class="thumbnail" data-index="5">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d4189cd8fb53f39a14bf.jpeg" alt="Cadillac CTS Thumbnail 6">
+    </div>
+    <div class="thumbnail" data-index="6">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824d3c17410f9803da2a0c3.jpeg" alt="Cadillac CTS Thumbnail 7">
+    </div>
+    <div class="thumbnail" data-index="7">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824e0e320806f0f2fee1575.jpeg" alt="Cadillac CTS Thumbnail 8">
+    </div>
+    <div class="thumbnail" data-index="8">
+      <img src="https://storage.googleapis.com/msgsndr/QjiQRR74D1pxPF7I8fcC/media/6824e0e39cd8fb58969a3d54.jpeg" alt="Cadillac CTS Thumbnail 9">
+    </div>
+  </div>
+</div>
+
+<!-- Vehicle Info Container -->
+<div class="vehicle-info-container">
+  <!-- Left Column: Vehicle Details -->
+  <div class="vehicle-details">
+    <div class="vehicle-description">
+      <h2 class="section-title">Vehicle Description</h2>
+      <p>This 2012 Cadillac CTS embodies the perfect blend of American luxury and performance. The sleek black exterior gives this sedan a commanding presence on the road, while the sophisticated black interior creates an atmosphere of refined elegance. This CTS represents Cadillac's commitment to building world-class luxury vehicles that compete with the finest European offerings.</p>
+      <p>With only 93,086 well-maintained miles, this luxury sedan comes equipped with premium features including leatherette seats that provide comfort and style, dual-zone automatic climate control for personalized comfort, and automatic climate control for effortless cabin temperature management. The CTS delivers a smooth, refined driving experience with the performance and handling characteristics that have made it a favorite among luxury sedan enthusiasts.</p>
+    </div>
+    
+    <div class="vehicle-specs">
+      <h2 class="section-title">Vehicle Specifications</h2>
+      <table class="specs-table">
+        <tr>
+          <th>Stock #</th>
+          <td>10201G6DC5E50C0139708</td>
+        </tr>
+        <tr>
+          <th>Year</th>
+          <td>2012</td>
+        </tr>
+        <tr>
+          <th>Make</th>
+          <td>Cadillac</td>
+        </tr>
+        <tr>
+          <th>Model</th>
+          <td>CTS</td>
+        </tr>
+        <tr>
+          <th>Mileage</th>
+          <td>93,086 miles</td>
+        </tr>
+        <tr>
+          <th>Exterior Color</th>
+          <td>Black</td>
+        </tr>
+        <tr>
+          <th>Interior Color</th>
+          <td>Black</td>
+        </tr>
+        <tr>
+          <th>Engine</th>
+          <td>3.0L V6</td>
+        </tr>
+        <tr>
+          <th>Transmission</th>
+          <td>6-Speed Automatic</td>
+        </tr>
+        <tr>
+          <th>Drive Type</th>
+          <td>Rear-Wheel Drive</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="key-features">
+      <h2 class="section-title">Key Features</h2>
+      <ul>
+        <li>Leatherette Seats</li>
+        <li>Dual A/C Zones</li>
+        <li>Automatic Climate Control</li>
+        <li>8-Way Power Driver Seat</li>
+        <li>Bose Premium Audio System</li>
+        <li>CUE Infotainment System</li>
+        <li>Bluetooth Connectivity</li>
+        <li>XM Satellite Radio</li>
+        <li>OnStar Services</li>
+        <li>Stabilitrak Electronic Stability Control</li>
+        <li>18-Inch Alloy Wheels</li>
+      </ul>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="/contact" class="btn btn-primary">Contact About This Vehicle</a>
+      <a href="/application" class="btn btn-secondary">Get Pre-Qualified</a>
+      <a href="/contact" class="btn btn-secondary" id="scheduleTest">Schedule Test Drive</a>
+    </div>
+  </div>
+  
+  <!-- Right Column: Sidebar -->
+  <div class="vehicle-sidebar">
+    <div class="sidebar-card">
+      <div class="dealer-info">
+        <div class="dealer-logo">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="dealer-name">T-Rex Motors</div>
+      </div>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <div>1300 South 9th St</div>
+            <div>Richmond, IN 47374</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <div>(765) 238-2887</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <div>Mon-Fri: 9AM - 7PM</div>
+            <div>Saturday: 9AM - 5PM</div>
+            <div>Sunday: Closed</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-section">
+        <h3>Interested in this vehicle?</h3>
+        
+        <!-- Simple Link for GHL Form -->
+        <a href="https://api.leadconnectorhq.com/widget/form/NyKaHaM78aOGlNVvmd1P" 
+           target="_blank" 
+           class="btn btn-primary btn-full"
+           style="display: inline-block; text-decoration: none;">
+          Get More Info
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </main>
+
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+  <script>
+    // Gallery functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mainImages = document.querySelectorAll('.main-image img');
+      const dots = document.querySelectorAll('.gallery-dot');
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      const prevButton = document.querySelector('.gallery-control.prev');
+      const nextButton = document.querySelector('.gallery-control.next');
+      let currentIndex = 0;
+      
+      // Function to update the active image
+      function updateActiveImage(index) {
+        mainImages.forEach(img => img.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        thumbnails.forEach(thumb => thumb.classList.remove('active'));
+        
+        mainImages[index].classList.add('active');
+        dots[index].classList.add('active');
+        thumbnails[index].classList.add('active');
+        currentIndex = index;
+      }
+      
+      // Event listeners for dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          updateActiveImage(index);
+        });
+      });
+      
+      // Event listeners for thumbnails
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener('click', () => {
+          updateActiveImage(index);
+        });
+      });
+      
+      // Event listeners for prev/next buttons
+      prevButton.addEventListener('click', () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = mainImages.length - 1;
+        updateActiveImage(newIndex);
+      });
+      
+      nextButton.addEventListener('click', () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= mainImages.length) newIndex = 0;
+        updateActiveImage(newIndex);
+      });
+      
+      // Auto-rotate images every 5 seconds
+      setInterval(() => {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= mainImages.length) newIndex = 0;
+        updateActiveImage(newIndex);
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>

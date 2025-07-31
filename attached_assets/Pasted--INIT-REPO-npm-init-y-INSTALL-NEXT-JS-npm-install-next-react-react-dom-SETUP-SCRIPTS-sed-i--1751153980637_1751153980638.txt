@@ -1,0 +1,100 @@
+# INIT REPO
+npm init -y
+
+# INSTALL NEXT.JS
+npm install next react react-dom
+
+# SETUP SCRIPTS
+sed -i 's/"test": "echo.*",/"dev": "next dev",\n    "build": "next build",\n    "start": "next start",/' package.json
+
+# CREATE NEXT CONFIG
+echo "module.exports = { reactStrictMode: true };" > next.config.js
+
+# CREATE PROJECT STRUCTURE
+mkdir -p pages/inventory components public/images data
+
+# ADD MOCK VEHICLE DATA
+cat <<EOF > data/vehicles.json
+[
+  {
+    "slug": "2012-cadillac-cts",
+    "title": "2012 Cadillac CTS",
+    "description": "American Luxury Performance Sedan",
+    "price": 12500,
+    "status": "for-sale",
+    "mileage": "93,086",
+    "year": "2012",
+    "make": "Cadillac",
+    "model": "CTS",
+    "engine": "3.0L V6",
+    "transmission": "6-Speed Automatic",
+    "drive_type": "Rear-Wheel Drive",
+    "color_exterior": "Black",
+    "color_interior": "Black",
+    "images": [
+      "/images/cts-front.jpg",
+      "/images/cts-side.jpg",
+      "/images/cts-interior.jpg"
+    ],
+    "key_features": [
+      "Leatherette Seats",
+      "Bose Premium Audio",
+      "Dual A/C Zones"
+    ],
+    "meta_title": "2012 Cadillac CTS – Luxury Sedan | T-Rex Motors",
+    "meta_description": "Used 2012 Cadillac CTS for sale in Richmond, IN with leatherette interior and premium audio."
+  }
+]
+EOF
+
+# ADD VEHICLE PAGE
+cat <<EOF > pages/inventory/[slug].js
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import vehicles from '../../data/vehicles.json';
+
+export default function VehiclePage() {
+  const { query } = useRouter();
+  const vehicle = vehicles.find(v => v.slug === query.slug);
+
+  if (!vehicle) return <div>Loading...</div>;
+
+  return (
+    <>
+      <Head>
+        <title>{vehicle.meta_title}</title>
+        <meta name="description" content={vehicle.meta_description} />
+      </Head>
+
+      <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
+        <h1>{vehicle.title}</h1>
+        <p>{vehicle.description}</p>
+        <p><strong>Price:</strong> ${vehicle.price.toLocaleString()}</p>
+        <ul>
+          <li><strong>Mileage:</strong> {vehicle.mileage}</li>
+          <li><strong>Engine:</strong> {vehicle.engine}</li>
+          <li><strong>Transmission:</strong> {vehicle.transmission}</li>
+          <li><strong>Drive Type:</strong> {vehicle.drive_type}</li>
+        </ul>
+        <h3>Key Features</h3>
+        <ul>
+          {vehicle.key_features.map((feature, idx) => (
+            <li key={idx}>{feature}</li>
+          ))}
+        </ul>
+        <div>
+          {vehicle.images.map((src, i) => (
+            <img key={i} src={src} alt={\`\${vehicle.title} image \${i+1}\`} style={{ maxWidth: "100%", marginBottom: "1rem" }} />
+          ))}
+        </div>
+      </main>
+    </>
+  );
+}
+EOF
+
+# CREATE EMPTY HOMEPAGE
+echo "export default function Home() { return <h1>T-Rex Motors Home</h1> }" > pages/index.js
+
+# DONE - PRINT START INSTRUCTIONS
+echo "✅ Setup Complete! Run your site with: npm run dev"
