@@ -9,7 +9,7 @@ T-Rex Motors now features comprehensive third-party vehicle history report integ
 - **VIN Audit** - Cost-effective alternative reports
 - **Vehicle History** - Comprehensive history database
 
-## Features for Customers
+## Features for Customers and Dealers
 
 ### Vehicle Detail Pages
 - **Unified History Button**: Single button to access all available reports
