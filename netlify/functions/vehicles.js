@@ -2,12 +2,18 @@ const { Pool } = require('pg');
 
 exports.handler = async (event, context) => {
   try {
+    console.log('=== NETLIFY FUNCTION DEBUG ===');
     console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
-    console.log('DATABASE_URL preview:', process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 30) + '...' : 'NOT SET');
+    console.log('NETLIFY_DATABASE_URL exists:', !!process.env.NETLIFY_DATABASE_URL);
+    console.log('DATABASE_URL preview:', process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 50) + '...' : 'NOT SET');
+    console.log('Event context:', context.functionName);
 
-    if (!process.env.DATABASE_URL) {
-      console.error('DATABASE_URL not set!');
-      // Fallback to ensure function doesn't fail completely
+    // Try both environment variables
+    const dbUrl = process.env.DATABASE_URL || process.env.NETLIFY_DATABASE_URL;
+    
+    if (!dbUrl) {
+      console.error('No database URL found in environment!');
+      // Return debug info instead of error
       return {
         statusCode: 200,
         headers: {
@@ -15,16 +21,31 @@ exports.handler = async (event, context) => {
           "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify([
-          { id: 1, make: "DATABASE", model: "NOT_CONNECTED", year: 2024, price: 0, mileage: "0", status: "error" }
+          { 
+            id: 1, 
+            make: "DEBUG", 
+            model: "NO_DATABASE_URL", 
+            year: 2024, 
+            price: 0, 
+            mileage: "Environment variables not set",
+            status: "error",
+            debug: {
+              hasDbUrl: !!process.env.DATABASE_URL,
+              hasNetlifyDbUrl: !!process.env.NETLIFY_DATABASE_URL,
+              context: context.functionName
+            }
+          }
         ])
       };
     }
 
     // Connect to your Replit PostgreSQL database
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString: dbUrl,
       ssl: { rejectUnauthorized: false }
     });
+    
+    console.log('Using database URL:', dbUrl.substring(0, 50) + '...');
 
     console.log('Attempting database connection...');
     const result = await pool.query(`
