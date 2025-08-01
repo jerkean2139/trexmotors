@@ -18,11 +18,21 @@ export function log(message: string, source = "express") {
 export async function setupVite(app: Express, server: Server) {
   log("Using fallback static serving (Vite not available)");
   
-  // Try to serve from built dist/public directory first
+  // Try to serve from built server/public directory first
+  const serverPublicPath = path.resolve(import.meta.dirname, "public");
   const distPath = path.resolve(import.meta.dirname, "..", "dist", "public");
   const clientPath = path.resolve(import.meta.dirname, "..", "client");
   
-  if (fs.existsSync(distPath)) {
+  if (fs.existsSync(serverPublicPath)) {
+    app.use(express.static(serverPublicPath));
+    log(`Serving built static files from: ${serverPublicPath}`);
+    
+    // Serve index.html for all routes
+    app.use("*", (req, res) => {
+      const indexPath = path.resolve(serverPublicPath, "index.html");
+      res.sendFile(indexPath);
+    });
+  } else if (fs.existsSync(distPath)) {
     app.use(express.static(distPath));
     log(`Serving built static files from: ${distPath}`);
     

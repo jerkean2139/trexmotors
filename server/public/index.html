@@ -20,13 +20,45 @@
     <link rel="stylesheet" crossorigin href="/assets/index-JFeC3cXd.css">
   </head>
   <body>
-    <div id="root"></div>
-    <!-- Replit development banner removed for clean deployment -->
+    <div id="root">
+      <div style="padding: 20px; font-family: Arial, sans-serif;">
+        <h1 style="color: #37ca37;">T-Rex Motors</h1>
+        <h2>Quality Used Vehicles</h2>
+        <div id="vehicle-list">Loading vehicles...</div>
+      </div>
+    </div>
     
-    <!-- PWA Service Worker Registration - Temporarily disabled for cleaner console -->
     <script>
-      // Service worker registration temporarily disabled to fix MIME type errors
-      // Will be re-enabled once proper server configuration is in place
+      // Simple vehicle display using the working API
+      fetch('/api/vehicles')
+        .then(response => response.json())
+        .then(vehicles => {
+          const listEl = document.getElementById('vehicle-list');
+          if (vehicles && vehicles.length > 0) {
+            listEl.innerHTML = `
+              <h3>Available Vehicles (${vehicles.length})</h3>
+              <div style="display: grid; gap: 15px; margin-top: 20px;">
+                ${vehicles.slice(0, 6).map(vehicle => `
+                  <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+                    <h4>${vehicle.year} ${vehicle.make} ${vehicle.model}</h4>
+                    <p><strong>Price:</strong> $${vehicle.price?.toLocaleString() || 'N/A'}</p>
+                    <p><strong>Miles:</strong> ${vehicle.miles?.toLocaleString() || 'N/A'}</p>
+                    <p><strong>Status:</strong> ${vehicle.status || 'Available'}</p>
+                  </div>
+                `).join('')}
+              </div>
+              <p style="margin-top: 20px; color: #666;">
+                <strong>API Status:</strong> ✅ Connected and working properly
+              </p>
+            `;
+          } else {
+            listEl.innerHTML = '<p>No vehicles found.</p>';
+          }
+        })
+        .catch(error => {
+          document.getElementById('vehicle-list').innerHTML = 
+            `<p style="color: red;">Error loading vehicles: ${error.message}</p>`;
+        });
     </script>
   </body>
 </html>

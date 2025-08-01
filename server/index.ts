@@ -125,12 +125,9 @@ async function startServer() {
     console.log("✅ Loaded ./vite-fallback");
   }
 
-  // Only integrate Vite in development
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
+  // Always use fallback static serving since vite isn't properly installed
+  // This serves the pre-built React application from server/public
+  serveStatic(app);
 
   // --- Start Listening ---
   const port = process.env.PORT ? Number(process.env.PORT) : 5000;

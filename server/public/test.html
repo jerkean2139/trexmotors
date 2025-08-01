@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>T-Rex Motors Test</title>
+</head>
+<body>
+    <h1>T-Rex Motors - Server Test</h1>
+    <p>If you can see this page, the server is working correctly.</p>
+    <div id="api-test">Loading vehicles...</div>
+    <script>
+        // Test API connectivity
+        fetch('/api/vehicles')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('api-test').innerHTML = 
+                    `<strong>API Working:</strong> Found ${data.length || 0} vehicles`;
+            })
+            .catch(error => {
+                document.getElementById('api-test').innerHTML = 
+                    `<strong>API Error:</strong> ${error.message}`;
+            });
+    </script>
+</body>
+</html>
