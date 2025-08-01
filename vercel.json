@@ -1,20 +1,24 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Skipping build - using pre-built static files'",
+  "installCommand": "npm install",
+  "buildCommand": "echo 'No build needed - using static files'",
   "outputDirectory": "server/public",
   "functions": {
-    "server/index.ts": {
+    "api/[...path].ts": {
       "runtime": "@vercel/node@3"
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/index.ts"
+      "dest": "/api/$1.ts"
+    },
+    {
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/server/public/$1"
+      "dest": "/index.html"
     }
   ],
   "env": {
