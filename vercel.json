@@ -1,6 +1,21 @@
 {
+  "version": 2,
+  "functions": {
+    "server/index.ts": {
+      "runtime": "@vercel/node@3"
+    }
+  },
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.ts" }
-  ]
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server/public/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
