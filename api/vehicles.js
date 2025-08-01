@@ -1,5 +1,3 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
 const vehicles = [
   {
     id: "1",
@@ -23,6 +21,6 @@ const vehicles = [
   }
 ];
 
-export default function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = (req, res) => {
   res.json(vehicles);
-}
+};

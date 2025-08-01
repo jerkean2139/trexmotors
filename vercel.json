@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "installCommand": "npm install",
-  "buildCommand": "echo 'No build needed - using static files'",
+  "installCommand": "echo 'Skipping npm install'",
+  "buildCommand": "echo 'No build process - static deployment only'",
   "outputDirectory": "server/public",
   "functions": {
-    "api/[...path].ts": {
+    "api/vehicles.js": {
       "runtime": "@vercel/node@3"
     }
   },
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.ts"
+      "src": "/api/vehicles",
+      "dest": "/api/vehicles.js"
     },
     {
       "handle": "filesystem"
@@ -20,8 +20,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

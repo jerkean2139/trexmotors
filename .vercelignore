@@ -1,0 +1,12 @@
+client/
+shared/
+server/
+*.ts
+*.tsx
+vite.config.*
+tailwind.config.*
+postcss.config.*
+tsconfig.*
+drizzle.config.*
+node_modules/
+.git/
