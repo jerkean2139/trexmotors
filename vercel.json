@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "echo 'Using pre-built static files' && ls -la server/public/",
+  "outputDirectory": "server/public",
   "functions": {
     "server/index.ts": {
       "runtime": "@vercel/node@3"
