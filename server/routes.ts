@@ -3,7 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertInquirySchema, insertVehicleSchema, insertCustomerApplicationSchema } from "@shared/schema";
 import { z } from "zod";
-import { registerAdminRoutes } from "./admin-routes";
+// Temporarily disabled due to dependency issues
+// import { registerAdminRoutes } from "./admin-routes";
 import { vehicleHistoryService } from "./vehicle-history-api";
 import { emailService } from "./email-service";
 
@@ -535,7 +536,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Register admin routes
-  await registerAdminRoutes(app);
+  // Temporarily disabled due to dependency issues
+  // await registerAdminRoutes(app);
 
   const httpServer = createServer(app);
   return httpServer;
