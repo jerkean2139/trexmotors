@@ -1,0 +1,53 @@
+~/workspace$ git push ^C
+~/workspace$ ^C
+~/workspace$ > vite build
+vite v5.4.19 building for production...
+transforming...
+✓ 15 modules transformed.
+x Build failed in 499ms
+error during build:
+[vite:css] [postcss] Cannot find module '@tailwindcss/typography'
+Require stack:
+- /vercel/path0/tailwind.config.ts
+file: /vercel/path0/client/src/index.css:undefined:NaN
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1401:15)
+    at Function.resolve (node:internal/modules/helpers:145:19)
+    at _resolve (/vercel/path0/node_modules/jiti/dist/jiti.js:1:246378)
+    at jiti (/vercel/path0/node_modules/jiti/dist/jiti.js:1:249092)
+    at /vercel/path0/tailwind.config.ts:87:45
+    at evalModule (/vercel/path0/node_modules/jiti/dist/jiti.js:1:251913)
+    at jiti (/vercel/path0/node_modules/jiti/dist/jiti.js:1:249841)
+    at /vercel/path0/node_modules/tailwindcss/lib/lib/load-config.js:52:26
+    at loadConfig (/vercel/path0/node_modules/tailwindcss/lib/lib/load-config.js:62:6)
+    at getTailwindConfig (/vercel/path0/node_modules/tailwindcss/lib/lib/setupTrackingContext.js:71:116)
+Error: Command "npm run build" exited with 1
+Exiting build container
+bash: build: command not found
+vite: command not installed. Multiple versions of this command were found in Nix.
+Select one to run (or press Ctrl-C to cancel):
+zammad  6.2.0                Zammad, a web-based, open source user support/ticketing solution.
+Adding zammad to .replit
+Commands:
+  vite build                       # Bundle all entrypoints using Vite.
+  vite clobber                     # Clear the Vite cache, temp files, and builds
+  vite dev                         # Start the Vite development server.
+  vite install                     # Performs the initial configuration setup to get started with Vite Ruby.
+  vite ssr                         # Run the resulting app from building in SSR mode.
+  vite upgrade                     # Updates Vite Ruby related gems and npm packages.
+  vite upgrade_packages            # Upgrades the npm packages to the recommended versions.
+  vite version                     # Print version
+bash: transforming...: command not found
+bash: ✓: command not found
+bash: x: command not found
+bash: error: command not found
+bash: [vite:css]: command not found
+bash: Require: command not found
+bash: -: command not found
+bash: file:: command not found
+bash: syntax error near unexpected token `('
+bash: syntax error near unexpected token `('
+bash: syntax error near unexpected token `('
+bash: syntax error near unexpected token `('
+at: command not installed, but was located via Nix.
+package: at  3.2.5  The classical Unix `at' job scheduling command
+Would you like to run at from Nix and add it to your project? [Yn]: 
