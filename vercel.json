@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "mkdir -p dist && cp -r server/public dist/",
-  "outputDirectory": "dist/public",
+  "buildCommand": "echo 'Skipping build - using pre-built static files'",
+  "outputDirectory": "server/public",
   "functions": {
     "server/index.ts": {
       "runtime": "@vercel/node@3"
@@ -14,7 +14,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/dist/public/$1"
+      "dest": "/server/public/$1"
     }
   ],
   "env": {
