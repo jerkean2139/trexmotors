@@ -1,5 +1,4 @@
-// Temporarily removed axios import to fix startup issue
-// import axios from 'axios';
+import axios from 'axios';
 
 interface VehicleHistoryReport {
   provider: 'carfax' | 'autocheck' | 'vinaudit' | 'vehiclehistory';

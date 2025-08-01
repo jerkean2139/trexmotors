@@ -10,7 +10,6 @@ packages = ["chromium", "killall", "lsof"]
 deploymentTarget = "autoscale"
 build = ["npm", "run", "build"]
 run = ["npm", "run", "start"]
-publicRoutes = ["/api/*", "/", "/manifest.json", "/assets/*", "/favicon.ico"]
 
 [[ports]]
 localPort = 3001
