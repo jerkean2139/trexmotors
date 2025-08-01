@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cp -r server/public dist/ && mkdir -p dist/public && cp -r server/public/* dist/public/",
+  "buildCommand": "mkdir -p dist && cp -r server/public dist/",
   "outputDirectory": "dist/public",
   "functions": {
     "server/index.ts": {
