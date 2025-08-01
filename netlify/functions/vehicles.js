@@ -22,7 +22,11 @@ exports.handler = async (event, context) => {
         description,
         stock_number as "stockNumber",
         vin,
-        image_url as "imageUrl"
+        images,
+        CASE 
+          WHEN images IS NOT NULL AND array_length(images, 1) > 0 THEN images[1]
+          ELSE 'https://via.placeholder.com/600x400/0066cc/ffffff?text=' || replace(make, ' ', '+') || '+' || replace(model, ' ', '+')
+        END as "imageUrl"
       FROM vehicles 
       WHERE status = 'for-sale' 
       ORDER BY id DESC
