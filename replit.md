@@ -3,6 +3,13 @@
 ## Overview
 T-Rex Motors is a full-stack web application for a used car dealership. It provides a modern, responsive interface for browsing vehicle inventory, viewing detailed vehicle information, and submitting inquiries. The project aims to offer a clean, automotive-focused design, enhance customer interaction, and streamline inventory management. Its business vision is to provide a robust online presence for car dealerships, offering a competitive edge in the market.
 
+## Recent Changes (August 2025)
+- Fixed critical database configuration error (Drizzle ORM setup)
+- Resolved "OK" response issue by replacing health check route with proper index.html serving
+- Installed missing Tailwind CSS dependencies (@tailwindcss/typography, @tailwindcss/forms, @tailwindcss/aspect-ratio)
+- Updated Vercel deployment configuration to use pre-built static files
+- Successfully deployed to Vercel with working vehicle inventory API and frontend
+
 ## User Preferences
 Preferred communication style: Simple, everyday language.
 
