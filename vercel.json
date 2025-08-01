@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Using pre-built static files' && ls -la server/public/",
-  "outputDirectory": "server/public",
+  "buildCommand": "cp -r server/public dist/ && mkdir -p dist/public && cp -r server/public/* dist/public/",
+  "outputDirectory": "dist/public",
   "functions": {
     "server/index.ts": {
       "runtime": "@vercel/node@3"
@@ -14,7 +14,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/server/public/$1"
+      "dest": "/dist/public/$1"
     }
   ],
   "env": {
