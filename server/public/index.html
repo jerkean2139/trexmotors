@@ -38,12 +38,13 @@
             listEl.innerHTML = `
               <h3>Available Vehicles (${vehicles.length})</h3>
               <div style="display: grid; gap: 15px; margin-top: 20px;">
-                ${vehicles.slice(0, 6).map(vehicle => `
+                ${vehicles.map(vehicle => `
                   <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
                     <h4>${vehicle.year} ${vehicle.make} ${vehicle.model}</h4>
                     <p><strong>Price:</strong> $${vehicle.price?.toLocaleString() || 'N/A'}</p>
-                    <p><strong>Miles:</strong> ${vehicle.miles?.toLocaleString() || 'N/A'}</p>
+                    <p><strong>Mileage:</strong> ${vehicle.mileage || 'N/A'}</p>
                     <p><strong>Status:</strong> ${vehicle.status || 'Available'}</p>
+                    ${vehicle.stockNumber ? `<p><strong>Stock:</strong> ${vehicle.stockNumber}</p>` : ''}
                   </div>
                 `).join('')}
               </div>
