@@ -1,0 +1,16 @@
+[build]
+  publish = "server/public"
+  command = ""
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/api/vehicles"
+  to = "/.netlify/functions/vehicles"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
