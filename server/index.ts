@@ -11,12 +11,11 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
 
-  // --- HEALTH CHECK ROUTE (Required for Replit Deploy) ---
+  // --- MAIN APPLICATION ROUTE ---
   app.get("/", (req, res) => {
-    res.setHeader("X-Replit-No-Auth", "true");
-    res.setHeader("X-Replit-Public", "true");
-    res.setHeader("Content-Type", "text/plain");
-    res.status(200).send("OK");
+    const indexPath = path.resolve(__dirname, "public", "index.html");
+    console.log(`🎯 Serving index.html: ${indexPath}`);
+    res.sendFile(indexPath);
   });
 
   // --- DIRECT API ENDPOINT (Before Any Middleware) ---
@@ -45,6 +44,10 @@ async function startServer() {
 
   // --- API MIDDLEWARE: Shield Bypass + CORS + Logging ---
   app.use('/api', (req, res, next) => {
+    // Only apply this middleware to API routes
+    if (!req.path.startsWith('/api')) {
+      return next();
+    }
     // Replit Shield Bypass
     res.setHeader("X-Replit-No-Auth", "true");
     res.setHeader("X-Replit-Public", "true");
@@ -62,7 +65,7 @@ async function startServer() {
 
     // Handle preflight
     if (req.method === "OPTIONS") {
-      return res.status(200).send();
+      return res.status(200).send("OK");
     }
 
     // Response logging (only for API routes)
@@ -124,6 +127,12 @@ async function startServer() {
     log = fallback.log;
     console.log("✅ Loaded ./vite-fallback");
   }
+
+  // DEBUG: Add logging before static serving
+  app.use((req, res, next) => {
+    console.log(`🔍 Route request: ${req.method} ${req.path}`);
+    next();
+  });
 
   // Always use fallback static serving since vite isn't properly installed
   // This serves the pre-built React application from server/public
