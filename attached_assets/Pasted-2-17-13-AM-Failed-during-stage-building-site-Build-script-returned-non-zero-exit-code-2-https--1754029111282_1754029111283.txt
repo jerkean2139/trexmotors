@@ -1,0 +1,57 @@
+2:17:13 AM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+2:17:13 AM: Netlify Build                                                 
+2:17:13 AM: ────────────────────────────────────────────────────────────────
+2:17:13 AM: ​
+2:17:13 AM: ❯ Version
+2:17:13 AM:   @netlify/build 35.0.0
+2:17:13 AM: ​
+2:17:13 AM: ❯ Flags
+2:17:13 AM:   accountId: 6748d08f50b97d75e652f466
+2:17:13 AM:   baseRelDir: true
+2:17:13 AM:   buildId: 688c5bccf5efbd266b92b766
+2:17:13 AM:   deployId: 688c5bccf5efbd266b92b768
+2:17:13 AM: ​
+2:17:13 AM: ❯ Current directory
+2:17:13 AM:   /opt/build/repo
+2:17:13 AM: ​
+2:17:13 AM: ❯ Config file
+2:17:13 AM:   No config file was defined: using default values.
+2:17:13 AM: ​
+2:17:13 AM: ❯ Context
+2:17:13 AM:   production
+2:17:13 AM: ​
+2:17:13 AM: Build command from Netlify app                                
+2:17:13 AM: ────────────────────────────────────────────────────────────────
+2:17:13 AM: ​
+2:17:13 AM: $ npm run build
+2:17:13 AM: > trex-motors@1.0.0 build
+2:17:13 AM: > vite build
+2:17:13 AM: vite v5.4.19 building for production...
+2:17:13 AM: ✓ 0 modules transformed.
+2:17:13 AM: x Build failed in 8ms
+2:17:13 AM: error during build:
+2:17:13 AM: Could not resolve entry module "index.html".
+2:17:13 AM:     at getRollupError (file:///opt/build/repo/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+2:17:13 AM:     at error (file:///opt/build/repo/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+2:17:13 AM:     at ModuleLoader.loadEntryModule (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:21511:20)
+2:17:13 AM:     at async Promise.all (index 0)
+2:17:13 AM: ​
+2:17:13 AM: "build.command" failed                                        
+2:17:13 AM: ────────────────────────────────────────────────────────────────
+2:17:13 AM: ​
+2:17:13 AM:   Error message
+2:17:13 AM:   Command failed with exit code 1: npm run build (https://ntl.fyi/exit-code-1)
+2:17:13 AM: ​
+2:17:13 AM:   Error location
+2:17:13 AM:   In Build command from Netlify app:
+2:17:13 AM:   npm run build
+2:17:13 AM: ​
+2:17:13 AM:   Resolved config
+2:17:13 AM:   build:
+2:17:13 AM:     command: npm run build
+2:17:13 AM:     commandOrigin: ui
+2:17:13 AM:     publish: /opt/build/repo/dist
+2:17:13 AM:     publishOrigin: ui
+2:17:13 AM: Build failed due to a user error: Build script returned non-zero exit code: 2
+2:17:13 AM: Failing build: Failed to build site
+2:17:14 AM: Finished processing build request in 20.612s
